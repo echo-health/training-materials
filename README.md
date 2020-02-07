@@ -21,17 +21,18 @@ deployment.apps/hello-world created
     1. Running `kubectl describe deployment hello-world` gives us basically the same thing, but with a nicely formatted view.
 1. From `describe` you should have noticed that all 3 "replicas" (posh word for "copies") are failing - why is this? (no cheating and looking further down this file)
 1. `kubectl get pod` shows us a slightly different view on the world:
-```
-charlottegodley@Charlottes-MBP kube-tutorial % kubectl get pod
-NAME                           READY   STATUS             RESTARTS   AGE
-hello-world-74b6c95894-j99tk   0/1     CrashLoopBackOff   5          5m47s
-hello-world-74b6c95894-n5872   0/1     CrashLoopBackOff   5          5m47s
-hello-world-74b6c95894-qdt4h   0/1     CrashLoopBackOff   5          5m47s
-```
-Between our deployment and the pod, kubernetes has assigned a randomised string to the end to make sure we don't have naming clashes.
+    ```
+    charlottegodley@Charlottes-MBP kube-tutorial % kubectl get pod
+    NAME                           READY   STATUS             RESTARTS   AGE
+    hello-world-74b6c95894-j99tk   0/1     CrashLoopBackOff   5          5m47s
+    hello-world-74b6c95894-n5872   0/1     CrashLoopBackOff   5          5m47s
+    hello-world-74b6c95894-qdt4h   0/1     CrashLoopBackOff   5          5m47s
+    ```
+    Between our deployment and the pod, kubernetes has assigned a randomised string to the end to make sure we don't have naming clashes.
+
+
 1. Again let's look at `kubectl describe pod` - if we do this with no pod name, it gives us a full log of allllllll the things. We can talk about some of the fields here if they're interesting, some that in the real world are fun:
-`Node:         minikube/<vm ip address>`: if you weren't using minikube, you'd hope your pods landed on different nodes. As it stands, we haven't told it to send them anywhere in particular which you can see from `Node-Selectors:  <none>` so Kubernetes magically finds out how much space there is on each node and assigns them according to your requests and limits on memory and storage space.
-Also, interesting: `Controlled By:  ReplicaSet/hello-world-74b6c95894` - we probably won't talk about ReplicaSets - they're a level between Deployment and Pod and you probably will never need to deploy just a replicaSet. Effectively they just control how many copies you want and pull them up and down as you need them. There are some contexts where it's useful to knowe they exist though.
+    - `Node:         minikube/<vm ip address>`: if you weren't using minikube, you'd hope your pods landed on different nodes. As it stands, we haven't told it to send them anywhere in particular which you can see from `Node-Selectors:  <none>` so Kubernetes magically finds out how much space there is on each node and assigns them according to your requests and limits on memory and storage space.
 1. Let's get down to the meat of why this container is sad, at the bottom of the output:
 ```
   Normal   Scheduled  9m23s                   default-scheduler  Successfully assigned hello-world/hello-world-74b6c95894-n5872 to minikube
@@ -65,4 +66,4 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
-So, it turns out we're running the wrong container, or don't have it locally.
+So, it turns out we're running the wrong container, or don't have it locally. Good to note: if this was a pod controlled by a CronJob, this wouldn't be a "fail", just a "completed". Pods ran by deployments are expected to never end execution.
