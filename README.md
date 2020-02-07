@@ -68,3 +68,36 @@ deployment.apps/hello-world created
     https://docs.docker.com/get-started/
     ```
     So, it turns out we're running the wrong container, or don't have it locally. Good to note: if this was a pod controlled by a CronJob, this wouldn't be a "fail", just a "completed". Pods ran by deployments are expected to never end execution.
+
+1. So...let's actually build the container and tag it as it is in the deployment file. `docker build -t hello-world:latest .`
+1. `kubectl get pod -w`...and...nothing...happened?
+    ```
+    charlottegodley@Charlottes-MBP kube-tutorial % kubectl get pod
+    NAME                           READY   STATUS             RESTARTS   AGE
+    hello-world-74b6c95894-j99tk   0/1     CrashLoopBackOff   12         37m
+    hello-world-74b6c95894-n5872   0/1     CrashLoopBackOff   12         37m
+    hello-world-74b6c95894-qdt4h   0/1     CrashLoopBackOff   12         37m
+    ```
+1. Let's go back to the deployment.yaml file and look at what image we set - `image: hello-world:latest`. Hmm, matches the tag we built.
+...
+1. The problem here is `imagePullPolicy` - when we first started the pod, it was pulled from the docker registry. This means we already _have_ a copy of hello-world:latest and it's not our copy. The default policy is `ifNotPresent` meaning, if there's no image, pull it down. 
+    - Something else to note here: if we switch this to `Always` (which would, after running `kubectl delete pod --all`), it's still bad practice to use `latest` tag because your code (whatever version it is since you can't tell from the tag) could randomly get deployed.
+1. In this context (i.e minikube) we need to set it to `Never`, because we've mapped the docker daemon on the machine to the one we used to build the image, so...we should _always_ have the image there anyway, so don't try to pull it from docker.
+    ```
+            spec:
+                containers:
+                - name: hello-world
+                    image: hello-world:1.0
+                    imagePullPolicy: Never
+                    ports:
+                    - containerPort: 8080 # need to specify this so that it is exposed to other things in the namespace e.g services
+    ```
+    - we've also changed the tag to be `1.0` to get around using latest so will need to retag/rebuild: `docker build -t hello-world:1.0 .`
+1. run `kubectl apply -f manifests/deployment.yaml` and it should work.
+    ```
+    charlottegodley@Charlottes-MBP kube-tutorial % kubectl get pod
+    NAME                           READY   STATUS    RESTARTS   AGE
+    hello-world-675bc74777-f4rkr   1/1     Running   0          3m34s
+    hello-world-675bc74777-jb5n5   1/1     Running   0          3m32s
+    hello-world-675bc74777-tmq9v   1/1     Running   0          3m33s
+    ```

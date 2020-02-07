@@ -24,6 +24,6 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: hello-world:latest 
+        image: hello-world:latest
         ports:
         - containerPort: 8080 # need to specify this so that it is exposed to other things in the namespace e.g services
