@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello-world
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: hello-world # if we don't specify namespace, it goes into "default" - this is bad practice
+  labels:
+    app: hello-world 
+    app-type: web-server # this label will only apply to the deployment
+spec:
+  replicas: 3 # how many copies of the pod we want to deploy: we can also specify constraints of where they are deployed
+  selector:
+    matchLabels:
+      app: hello-world # this may be optional - generally kubernetes figures out label selectors for you by what labels are applied in the template
+  template: # from here on is effectively the pod's yaml
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: hello-world:latest 
+        ports:
+        - containerPort: 8080 # need to specify this so that it is exposed to other things in the namespace e.g services
