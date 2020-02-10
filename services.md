@@ -44,4 +44,18 @@
     - update `main.go` so that it runs on port `8081`
     - Change the service so that there's a second port definition pointing to port 8081
     - rebuild, change the tag, update the yaml, reapply. (It should be fairly obvious how to do this part by now :D )
-    - **NOTE** you probably wouldn't do it this way in the real world - we would instead add the container as a second container definition on the deployment. What's the problem in the 2 deployment approach?
+    - **NOTE** you probably wouldn't do it this way in the real world - we would instead add the container as a second container definition on the first deployment. What's the problem in the 2 deployment approach?
+1. Finally, we can debug whether the service works _inside_ the cluster by deploying a new pod: `kubectl run curl --image=radial/busyboxplus:curl -i --tty --rm`
+    - Then run `nslookup hello-service` to check it's discoverable:
+      ```
+      Server:    10.96.0.10
+      Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
+
+      Name:      hello-service
+      Address 1: 10.103.232.123 hello-service.hello-world.svc.cluster.local
+      ```
+    - and curl it: `curl hello-service/world`:
+      ```
+      [ root@curl-crg-5b9787c7bf-8w7fm:/ ]$ curl hello-service/world
+        Good morning, world!
+      ```
