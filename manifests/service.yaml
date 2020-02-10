@@ -38,5 +38,6 @@ spec:
             containers:
             - name: hello-world
               image: hello-world:1.0
+              imagePullPolicy: Never
               ports:
               - containerPort: 8080 
