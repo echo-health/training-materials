@@ -101,3 +101,5 @@ deployment.apps/hello-world created
     hello-world-675bc74777-jb5n5   1/1     Running   0          3m32s
     hello-world-675bc74777-tmq9v   1/1     Running   0          3m33s
     ```
+1. Now, up until now, we've just looked at the state of the pod, deployment etc without looking at what it's doing...but it's inside a cluster, inside a VM, so from where we're running these commands, we can't actually send any traffic to it. To do this we use `port-forward` which works similarly to mounting a docker port to your computer's ports: `kubectl port-forward <pod-name> 8080:8080`
+1. Now if you open up a web browser and go to `http://localhost:8080/world`, you should see `Hello, world!`.
