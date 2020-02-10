@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: hello-world
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: hello-service
+    namespace: hello-world
+spec:
+    selector:
+        foo: bar # this picks up pods which have this label
+    ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: hello-service
+    namespace: hello-world 
+    labels:
+        app: hello-service
+spec:
+    replicas: 3 
+    selector:
+        matchLabels:
+            app: hello-service 
+    template: 
+        metadata:
+            labels:
+                app: hello-service # this determines which pods the deployment will control
+                foo: bar # this makes the service route traffic to our pods
+        spec:
+            containers:
+            - name: hello-world
+              image: hello-world:1.0
+              ports:
+              - containerPort: 8080 
