@@ -1,4 +1,5 @@
 # Exercise 3: Configuring Applications
+1. As before, check we are in the right cluster: `kubectl config get-contexts` and where appropriate, set your query namespace to be where we'll be working: `kubectl config set contexts.minikube.namespace hello-world`
 1. Open up `manifests/configmap.yaml` - let's discuss what's in here:
     - We have 2 applications in 2 namespaces
     - We also have 2 ways of writing a config map - one uses pure yaml, the other uses yaml strings
