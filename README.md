@@ -5,3 +5,4 @@ This repository is intended to teach what the abstractions are in Kubernetes, ho
 
 - [Exercise 1: Deployments](deployments.md)
 - [Exercise 2: Services](services.md)
+- [Exercise 3: Config maps and secrets](config.md)
