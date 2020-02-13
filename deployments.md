@@ -1,11 +1,11 @@
 
 # Exercise 1: deployments
 1. Run `kubectl config get-contexts` - it's good to start off work by checking you're in the right cluster. you should see output like:
-```
-charlottegodley@Charlottes-MBP kube-tutorial % kubectl config get-contexts
-CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE
-*         minikube   minikube   minikube  
-```
+    ```
+    charlottegodley@Charlottes-MBP kube-tutorial % kubectl config get-contexts
+    CURRENT   NAME                 CLUSTER          AUTHINFO         NAMESPACE
+    *         docker-desktop       docker-desktop   docker-desktop   
+    ```
 1. Run `kubectl get ns` - this lists the namespaces you have with vanilla minikube. Not all of these are accessible/modifiable in GKE but would be in vanilla kubernetes.
 1. Run `kubectl apply -f manifests/deployment.yaml` - you should see:
 ```
@@ -15,7 +15,7 @@ deployment.apps/hello-world created
 ```
 1. Let's open up the file and talk about what's in there. We can inspect the cluster to see what happened here also:
     1. Run `kubectl get ns` and see there's a new namespace
-    1. Run `kubectl config set contexts.minikube.namespace hello-world` to set our default query namespace (for the minikube context) to hello-world - optional, but this allows you to skip out `-n hello-world` when poking around with pods.
+    1. Run `kubectl config set contexts.docker-desktop.namespace hello-world` to set our default query namespace (for the minikube context) to hello-world - optional, but this allows you to skip out `-n hello-world` when poking around with pods.
     1. Run `kubectl get deployment -o yaml` - we see basically the same output as what we put in, except there's new stuff like "status" which tells us what's going on with the deployment, and anything that's system level or which we didn't bother filling in, kubernetes has dumped the default values. Don't worry too much about the stuff in here, a lot of it you'll never need to know.
     1. Running `kubectl describe deployment hello-world` gives us basically the same thing, but with a nicely formatted view.
 1. From `describe` you should have noticed that all 3 "replicas" (posh word for "copies") are failing - why is this? (no cheating and looking further down this file)
