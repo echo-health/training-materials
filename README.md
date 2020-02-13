@@ -2,8 +2,9 @@
 This repository is intended to teach what the abstractions are in Kubernetes, how to use them and how to debug them. Each exercise is self contained, but it is recommended to start at exercise 1 if you are a beginner.
 
 ## Prerequisites
-- You need to set up your mac to use the docker-for-mac kubernetes integration: [instructions](https://docs.docker.com/docker-for-mac/#kubernetes). This will spin up a kubernetes cluster inside a container and comes with kubectl in case you don't already have this.
-- For one bit you will also need [jq](https://stedolan.github.io/jq/) which you can get by running `brew install jq`
+- [Docker for Mac](https://download.docker.com/mac/stable/Docker.dmg)
+- You need to set up your mac to use the Docker For Mac kubernetes integration: [instructions](https://docs.docker.com/docker-for-mac/#kubernetes). This will spin up a kubernetes cluster inside a container and comes with kubectl in case you don't already have this.
+- You will also need [jq](https://stedolan.github.io/jq/) which you can get by running `brew install jq`
 
 ## Exercises
 - [Exercise 1: Deployments](deployments.md)
