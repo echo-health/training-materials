@@ -20,3 +20,8 @@
     - to debug this, let's use exec: `kubectl exec <pod name> -it -- /bin/sh` (`-it` means interactive, `-- /bin/sh` is what command we are running)
     - and run `ls /etc/config` to find out the filename we mounted the config map as.
     - It appears to be named "environment" because that's what we wrote in the config map. Open up `main.go` and figure out what's wrong, and suggest how we fix this :D
+
+## Secret information
+Config maps allow you to configure applications differently depending on where they're running, like the namespace or cluster they are deployed to, but the information is completely open. Secrets work vastly the same way as config maps but encode the data they are given in base64, then decode it when it is given to the application. _Note that this is encoding, not encryption_. 
+
+They also have a different category when it comes to kubernetes access control, meaning if you had a tiered access system for developers, you could limit the amount of secret data shown to developers.
