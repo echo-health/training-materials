@@ -7,6 +7,7 @@ This repository is intended to teach what the abstractions are in Kubernetes, ho
 - You will also need [jq](https://stedolan.github.io/jq/) which you can get by running `brew install jq`
 
 ## Exercises
+- [(Reading) Precursor: what is kubernetes?](kubernetes.md)
 - [Exercise 1: Deployments](deployments.md)
 - [Exercise 2: Services](services.md)
 - [Exercise 3: Config maps and secrets](config.md)
