@@ -6,6 +6,7 @@
     CURRENT   NAME                 CLUSTER          AUTHINFO         NAMESPACE
     *         docker-desktop       docker-desktop   docker-desktop   
     ```
+1. If it is not set to this, run `kubectl config use-context docker-desktop`. If this fails, you probably don't have the docker desktop integration set up - see the readme.
 1. Run `kubectl get ns` - this lists the namespaces you have with vanilla minikube. Not all of these are accessible/modifiable in GKE but would be in vanilla kubernetes.
 1. Run `kubectl apply -f manifests/deployment.yaml` - you should see:
 ```
