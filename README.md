@@ -11,14 +11,14 @@ This repository is intended to teach what the abstractions are in Kubernetes, ho
 
 ## Exercises
 ### Workshop 1: Vanilla Kubernetes
-- [(Reading) Precursor: what is kubernetes?](kubernetes.md)
-- [Exercise 1: Deployments](deployments.md)
-- [Exercise 2: Services](services.md)
-- [Exercise 3: Config maps and secrets](config.md)
+- [(Reading) Precursor: what is kubernetes?](docs/kubernetes.md)
+- [Exercise 1: Deployments](docs/deployments.md)
+- [Exercise 2: Services](docs/services.md)
+- [Exercise 3: Config maps and secrets](docs/config.md)
 
 ### Workshop 2: Echo-Flavoured Kubernetes
-- [Exercise 4: Helm](helm.md)
-- [Exercise 5: Kustomize](kustomize.md)
+- [Exercise 4: Helm](docs/helm.md)
+- [Exercise 5: Kustomize](docs/kustomize.md)
 
 ## Wider reading, references etc
 - The kubernetes documentation is fairly heavy. [kubernetes.io](https://kubernetes.io) - Generally the best way to use this is to google the resource type you're interested in
