@@ -23,3 +23,10 @@ This repository is intended to teach what the abstractions are in Kubernetes, ho
 ## Wider reading, references etc
 - The kubernetes documentation is fairly heavy. [kubernetes.io](https://kubernetes.io) - Generally the best way to use this is to google the resource type you're interested in
 - https://github.com/ramitsurana/awesome-kubernetes - list of other "awesome" resources for learning more about kubernetes.
+- Kustomize:
+    - [kubernetes.io docs](https://kubectl.docs.kubernetes.io/pages/examples/kustomize.html)
+    - [kustomize full documentation](https://kustomize.io)
+    - [kustomize repo](https://github.com/kubernetes-sigs/kustomize/tree/master/docs)
+- Helm:
+    - [helm docs](https://helm.sh)
+    - [simple hello world tutorial](https://medium.com/@pablorsk/kubernetes-helm-node-hello-world-c97d20437abd)
