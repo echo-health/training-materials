@@ -23,6 +23,9 @@ This repository is intended to teach what the abstractions are in Kubernetes, ho
 
 ## Wider reading, references etc
 - The kubernetes documentation is fairly heavy. [kubernetes.io](https://kubernetes.io) - Generally the best way to use this is to google the resource type you're interested in
+- Aliasing options:
+    - [kubectl-aliases](https://github.com/ahmetb/kubectl-aliases) a script which generates a lot of aliases for you so you can do less typing
+    
 - [katacoda](https://katacoda.com) is an interactive learning environment for DevOps which has a lot of courses on Kubernetes among other useful tools.
 - https://github.com/ramitsurana/awesome-kubernetes - list of other "awesome" resources for learning more about kubernetes.
 - Kustomize:
