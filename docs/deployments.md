@@ -8,7 +8,7 @@
     ```
 1. If it is not set to this, run `kubectl config use-context docker-desktop`. If this fails, you probably don't have the docker desktop integration set up - see the readme.
 1. Run `kubectl get ns` - this lists the namespaces you have with vanilla minikube. Not all of these are accessible/modifiable in GKE but would be in vanilla kubernetes.
-1. Run `kubectl apply -f manifests/deployment.yaml` - you should see:
+1. Run `kubectl apply -f manifests/deployment.yaml` from within the location you checked out this repo - you should see:
 ```
 charlottegodley@Charlottes-MBP kube-tutorial % kubectl apply -f manifests/deployment.yaml
 namespace/hello-world created
@@ -70,7 +70,7 @@ deployment.apps/hello-world created
     So, it turns out we're running the wrong container, or don't have it locally. Good to note: if this was a pod controlled by a CronJob, this wouldn't be a "fail", just a "completed". Pods ran by deployments are expected to never end execution.
 
 1. So...let's actually build the container and tag it as it is in the deployment file. `docker build -t hello-world:latest .`
-1. `kubectl get pod -w`...and...nothing...happened?
+1. `kubectl get pod`...and...nothing...happened?
     ```
     charlottegodley@Charlottes-MBP kube-tutorial % kubectl get pod
     NAME                           READY   STATUS             RESTARTS   AGE
@@ -92,7 +92,7 @@ deployment.apps/hello-world created
                     ports:
                     - containerPort: 8080 # need to specify this so that it is exposed to other things in the namespace e.g services
     ```
-    - we've also changed the tag to be `1.0` to get around using latest so will need to retag/rebuild: `docker build -t hello-world:1.0 .`
+    - we've also changed the tag to be `1.0.0` to get around using latest so will need to retag/rebuild: `docker build -t hello-world:1.0.0 .`
 1. run `kubectl apply -f manifests/deployment.yaml` and it should work.
     ```
     charlottegodley@Charlottes-MBP kube-tutorial % kubectl get pod
