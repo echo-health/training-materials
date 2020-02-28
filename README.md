@@ -23,8 +23,8 @@ If you are intending on running this as a workshop, I've made a brief [agenda do
 COMING SOON :D
 
 ### Homework: How we deploy to Kubernetes at Echo
-- [Exercise 4: Helm](docs/helm.md)
-- [Exercise 5: Kustomize](docs/kustomize.md)
+- [Helm](docs/helm.md)
+- [Kustomize](docs/kustomize.md)
 
 ## Wider reading, references etc
 - The kubernetes documentation is fairly heavy. [kubernetes.io](https://kubernetes.io) - Generally the best way to use this is to google the resource type you're interested in
