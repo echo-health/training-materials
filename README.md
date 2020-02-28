@@ -19,7 +19,10 @@ If you are intending on running this as a workshop, I've made a brief [agenda do
 - [Exercise 2: Services](docs/services.md)
 - [Exercise 3: Config maps and secrets](docs/config.md)
 
-### Workshop 2: Echo-Flavoured Kubernetes
+## Workshop 2: Further container debugging
+COMING SOON :D
+
+### Homework: How we deploy to Kubernetes at Echo
 - [Exercise 4: Helm](docs/helm.md)
 - [Exercise 5: Kustomize](docs/kustomize.md)
 
