@@ -87,7 +87,7 @@ deployment.apps/hello-world created
             spec:
                 containers:
                 - name: hello-world
-                    image: hello-world:1.0
+                    image: hello-world:1.0.0
                     imagePullPolicy: Never
                     ports:
                     - containerPort: 8080 # need to specify this so that it is exposed to other things in the namespace e.g services
