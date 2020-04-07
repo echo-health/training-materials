@@ -1,6 +1,6 @@
 # Zipkin Training
 
-This repository contains some examples of how to use [Zipkin](https://zipkin.io/) to instrument applications.
+This directory contains some examples of how to use [Zipkin](https://zipkin.io/) to instrument applications.
 
 ### What is instrumentation?
 
