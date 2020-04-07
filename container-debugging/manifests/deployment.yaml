@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: goroutines
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: goroutines
+    namespace: goroutines # if we don't specify namespace, it goes into "default" - this is bad practice
+    labels:
+    app: goroutines 
+    app-type: web-server # this label will only apply to the deployment
+spec:
+    replicas: 3 # how many copies of the pod we want to deploy: we can also specify constraints of where they are deployed
+    selector:
+    matchLabels:
+        app: goroutines # this may be optional - generally kubernetes figures out label selectors for you by what labels are applied in the template
+    template: # from here on is effectively the pod's yaml
+    metadata:
+        labels:
+        app: goroutines
+    spec:
+        containers:
+        - name: goroutines
+        image: goroutines:1.0.0
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080 # need to specify this so that it is exposed to other things in the namespace e.g services
