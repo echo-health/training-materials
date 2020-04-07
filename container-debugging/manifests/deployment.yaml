@@ -27,4 +27,5 @@ spec:
         image: goroutines:1.0.0
         imagePullPolicy: Never
         ports:
-        - containerPort: 8080 # need to specify this so that it is exposed to other things in the namespace e.g services
+        - containerPort: 6060
+          

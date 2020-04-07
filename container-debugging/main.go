@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"net/http"
+	_ "net/http/pprof"
+)
 
 func main() {
 	channel := make(chan int)
@@ -12,4 +17,10 @@ func main() {
 			<-channel
 		}()
 	}
+}
+
+func exposePprof() {
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
 }

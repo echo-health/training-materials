@@ -1,5 +1,5 @@
 # Container debugging
-- We're going to be working in the workshop-2 dir for all commands, so run `cd workshop-2` and then do a `docker build -t goroutines:1.0.0 .`
+- We're going to be working in the `./container-debugging` for all commands, so run `cd container-debugging` and then do a `docker build -t goroutines:1.0.0 .`
 - Open up the `Dockerfile` and the `main.go` file. 
     1. Do you understand what's happening in the Dockerfile, i.e what is the build process for this program?
     1. Is there anything particularly interesting happening in `main.go`?
@@ -10,4 +10,6 @@
     1. Whether our program is running
     1. What it might be doing
 - Let's start by running `top` - what do you see? `top` gives you a listing of the processes running on any linux or darwin machine. It's useful for debugging where your processes are using a lot of memory or CPU. Pay close attention in this case to "Mem" which is memory usage.
+- Using top like this is all well and good, but we've had to change the image and rebuild it in order to access it, and we don't need a shell for anything but debugging. An alternative to this is `pprof` which is a go tool for exposing details like memory, goroutines running over HTTP.
+- To expose pprof let's open up `main.go` and add a call to `exposePprof()` before the for loop.
 
