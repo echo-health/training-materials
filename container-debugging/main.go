@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	_ "net/http/pprof"
+	"time"
 )
 
 func main() {
@@ -16,6 +17,7 @@ func main() {
 		go func() {
 			<-channel
 		}()
+		time.Sleep(10 * time.Second)
 	}
 }
 
