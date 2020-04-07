@@ -7,3 +7,7 @@ Post the github repo somewhere accessible to the group in case we aren't all set
 1. Questions?
 1. Run through exercises
 1. 5 mins from end - feedback and PR.
+
+## Feedback
+- Diagrams? Whiteboarding?
+- Good to debug the common problems
