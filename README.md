@@ -1,42 +1,18 @@
-# kubernetes-tutorial
-This repository is intended to teach what the abstractions are in Kubernetes, how to use them and how to debug them. Each exercise is self contained, but it is recommended to start at exercise 1 if you are a beginner.
+# training-materials
+This repository contains the training materials we use at Echo internally in order to upskill developers.
 
-If you are intending on running this as a workshop, I've made a brief [agenda doc](workshop.md) to suggest things to mention during the session.
+If you are contributing to this repo, create a folder named appropriately and include a README which should explain how to follow the material.
 
-## Prerequisites
-- Workshop 1:
-    - Clone this repo, and start a terminal window in the folder where you cloned it
-    - [Docker for Mac](https://download.docker.com/mac/stable/Docker.dmg)
-    - You need to set up your mac to use the Docker For Mac kubernetes integration: [instructions](https://docs.docker.com/docker-for-mac/#kubernetes). This will spin up a kubernetes cluster inside a container and comes with kubectl in case you don't already have this. (If you do already have `kubectl`, it should Just Work)
-    - You will also need [jq](https://stedolan.github.io/jq/) which you can get by running `brew install jq`
-- Homework: 
-    - [helm](https://helm.sh/docs/intro/install/)
+If you would like someone to run through any of the materials here, please ask in #engineering on Slack or DM Charlotte. There will be regularly organised workshops on a team by team basis or when new people join, but you can also request refreshers.
 
-## Exercises
-### Workshop 1: Vanilla Kubernetes
-- [(Reading) Precursor: what is kubernetes?](docs/kubernetes.md)
-- [Exercise 1: Deployments](docs/deployments.md)
-- [Exercise 2: Services](docs/services.md)
-- [Exercise 3: Config maps and secrets](docs/config.md)
+If you would like material on particular topics, please ask in Slack.
 
-## Workshop 2: Further container debugging
-COMING SOON :D
+If you have any feedback on any of the material, feel free to submit a pull request.
 
-### Homework: How we deploy to Kubernetes at Echo
-- [Helm](docs/helm.md)
-- [Kustomize](docs/kustomize.md)
-
-## Wider reading, references etc
-- The kubernetes documentation is fairly heavy. [kubernetes.io](https://kubernetes.io) - Generally the best way to use this is to google the resource type you're interested in
-- Aliasing options:
-    - [kubectl-aliases](https://github.com/ahmetb/kubectl-aliases) a script which generates a lot of aliases for you so you can do less typing
-
-- [katacoda](https://katacoda.com) is an interactive learning environment for DevOps which has a lot of courses on Kubernetes among other useful tools.
-- https://github.com/ramitsurana/awesome-kubernetes - list of other "awesome" resources for learning more about kubernetes.
-- Kustomize:
-    - [kubernetes.io docs](https://kubectl.docs.kubernetes.io/pages/examples/kustomize.html)
-    - [kustomize full documentation](https://kustomize.io)
-    - [kustomize repo](https://github.com/kubernetes-sigs/kustomize/tree/master/docs)
-- Helm:
-    - [helm docs](https://helm.sh)
-    - [simple hello world tutorial](https://medium.com/@pablorsk/kubernetes-helm-node-hello-world-c97d20437abd)
+## Contents
+- [Kubernetes](./kubernetes)
+    - **Brief description**: 101 intro to the most useful concepts in Kubernetes. Some homework provided around Helm and Kustomize which we use to deploy manifests
+    - **Owner**: Charlotte 
+- [Zipkin](./zipkin)
+    - **Description**: Intro into tracing and how to use zipkin and jaeger to follow requests through the system.
+    - **Owner**: Jon
