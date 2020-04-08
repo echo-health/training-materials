@@ -27,5 +27,7 @@ spec:
               image: goroutines:1.0.2
               imagePullPolicy: Never
               ports:
-              - containerPort: 6060
-            
+              - name: pprof
+                containerPort: 6060
+              - name: prometheus
+                containerPort: 9001
