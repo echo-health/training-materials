@@ -1,4 +1,4 @@
-module github.com/echo-health/kube-tutorial/workshop-2
+module github.com/echo-health/training-materials/container-debugging
 
 go 1.13
 
