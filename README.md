@@ -16,3 +16,6 @@ If you have any feedback on any of the material, feel free to submit a pull requ
 - [Zipkin](./zipkin)
     - **Description**: Intro into tracing and how to use zipkin and jaeger to follow requests through the system.
     - **Owner**: Jon
+- [Container debugging](./container-debugging)
+    - **Description**: Intro to debugging a sad container using top, pprof and prometheus
+    - **Owner**: Charlotte
