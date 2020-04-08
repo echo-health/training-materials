@@ -29,5 +29,17 @@ This tutorial is intended to teach some basics around container debugging, for e
     1. How quickly is it getting worse?
     
     in order to narrow down the problem and understand the impact of fixing it. To see this, we're going to try out prometheus to get some pretty graphs.
-### Setting up Prometheus
-
+### Using prometheus
+- Open up `manifests/deployment.yaml`. You should see the usual deployment yaml used in other tutorials in this repo, but in addition to that there's a `prometheus` port.
+    - Prometheus is a time series data store for monitoring
+    - It collects data by pulling it from sources - so,
+        1. you configure prometheus to have a bunch of data sources
+        1. you configure your app to expose a source over HTTP
+        1. prometheus scrapes the data source on a given repetition (e.g every 10 seconds)
+        1. ???
+        1. Profit
+- Right now this port doesn't do anything. If you expose it using `port-forward` it will just give you a connection refused error when you hit it, so let's crack open `main.go` again and add a call to `exposePrometheus()` before the for loop.
+- Next, we need a prometheus server.
+## Wider reading
+- [rakyll's blog on pprof UI](https://rakyll.org/pprof-ui/)
+- [Julia Evan's blog on pprof](https://jvns.ca/blog/2017/09/24/profiling-go-with-pprof/)
