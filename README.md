@@ -11,7 +11,7 @@ If you have any feedback on any of the material, feel free to submit a pull requ
 
 ## Contents
 - [Kubernetes](./kubernetes)
-    - **Brief description**: 101 intro to the most useful concepts in Kubernetes. Some homework provided around Helm and Kustomize which we use to deploy manifests
+    - **Description**: 101 intro to the most useful concepts in Kubernetes. Some homework provided around Helm and Kustomize which we use to deploy manifests
     - **Owner**: Charlotte 
 - [Zipkin](./zipkin)
     - **Description**: Intro into tracing and how to use zipkin and jaeger to follow requests through the system.
