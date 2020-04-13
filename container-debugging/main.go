@@ -13,6 +13,7 @@ import (
 func main() {
 	channel := make(chan int)
 	count := 0
+	exposePrometheus()
 	for {
 		count += 1
 		fmt.Printf("Starting a new goroutine - count %d\n", count)

@@ -24,10 +24,24 @@ spec:
         spec:
             containers:
             - name: goroutines
-              image: goroutines:1.0.2
+              image: goroutines:1.0.3
               imagePullPolicy: Never
               ports:
               - name: pprof
                 containerPort: 6060
               - name: prometheus
                 containerPort: 9001
+---
+kind: Service
+apiVersion: v1
+metadata:
+    name: goroutines
+    namespace: goroutines
+    labels:
+        app: goroutines
+spec:
+    selector:
+        app: goroutines
+    ports:
+    - name: prometheus
+      port: 9001

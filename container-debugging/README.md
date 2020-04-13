@@ -38,8 +38,19 @@ This tutorial is intended to teach some basics around container debugging, for e
         1. prometheus scrapes the data source on a given repetition (e.g every 10 seconds)
         1. ???
         1. Profit
-- Right now this port doesn't do anything. If you expose it using `port-forward` it will just give you a connection refused error when you hit it, so let's crack open `main.go` again and add a call to `exposePrometheus()` before the for loop.
-- Next, we need a prometheus server.
+- First up to get using this, let's install prometheus - run `kubectl apply -f manifests/bundle.yaml`. This installs the prometheus operator which makes configuration and installation of prometheus servers more manageable.
+- Next, let's create an instance of prometheus by running `kubectl apply -f manifests/prometheus.yaml`. If you open that file up you should see:
+    - A service monitor. This is an abstracted version of the prometheus yaml that determines which pods/services to scrape.
+    - A prometheus. This is the server itself and determines which service monitors to select and include in scraper config.
+    - A service. This is so that we can expose it in or outside the cluster.
+- After you've done that, run `kubectl port-forward service/prometheus -n goroutines 9090` and navigate to `http://localhost:9090/targets`. You should see 3 targets, all of which are down
+    - why are there 3?
+    - Why are they down?
+- To figure out point 2, run `kubectl port-forward service/goroutines -n goroutines 9001` and navigate to `http://localhost:9001/metrics`
+    - To fix, check out `main.go` again and add a call to `exposePrometheus()`, then retag/redeploy.
+- Finally, let's actually do something with prometheus. Back in the prometheus UI click "Graph" and then enter `go_goroutines` and click execute and you should get a nice graph: ![prometheus](./images/prometheus.png)
+
+
 ## Wider reading
 - [rakyll's blog on pprof UI](https://rakyll.org/pprof-ui/)
 - [Julia Evan's blog on pprof](https://jvns.ca/blog/2017/09/24/profiling-go-with-pprof/)
