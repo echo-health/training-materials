@@ -7,7 +7,7 @@ import (
 
 	opentracing "github.com/opentracing/opentracing-go"
 
-	"github.com/echo-health/zipkin-tutorial/tracer"
+	"github.com/echo-health/training-materials/tracer"
 )
 
 func main() {

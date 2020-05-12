@@ -4,12 +4,12 @@ This is an example of how a trace can cover multiple services, much like how we 
 
 ### How to run
 
-- Start Zipkin. Either `docker-compose up` or see [running in Kubernetes](../kubernetes)
-- Open the [Zipkin UI](http://localhost:9411/zipkin/)
+- Start Jaeger. Either `docker-compose up` or see [running in Kubernetes](../kubernetes)
+- Open the [web UI](http://localhost:16686/)
 - Run the "other" service - `go run other_service/main.go`
 - Run (in a different tab) the Go program - `go run main.go`
 - Look at the output from each program to see how trace information was passed between services
-- Find the span in Zipkin
+- Find the span in Jaeger
 
 ### What is happening?
 
@@ -19,5 +19,5 @@ In this example the two services are communicating over HTTP but the communicati
 
 Things you can try after running this example:
 
-- Try making multiple requests to service B from service A and see how that shows up in Zipkin
+- Try making multiple requests to service B from service A and see how that shows up in Jaeger
 - Try sending some data to service B in query parameters and then logging that data to a span in service B

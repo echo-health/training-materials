@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/echo-health/zipkin-tutorial/tracer"
+	"github.com/echo-health/training-materials/tracer"
 
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/log"

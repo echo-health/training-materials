@@ -1,4 +1,4 @@
-module github.com/echo-health/zipkin-tutorial
+module github.com/echo-health/training-materials/tracing
 
 go 1.13
 

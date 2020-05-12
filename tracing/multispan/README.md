@@ -4,10 +4,10 @@ This is an example of how to create child spans.
 
 ### How to run
 
-- Start Zipkin. Either `docker-compose up` or see [running in Kubernetes](../kubernetes)
-- Open the [Zipkin UI](http://localhost:9411/zipkin/)
+- Start Jaeger. Either `docker-compose up` or see [running in Kubernetes](../kubernetes)
+- Open the [web UI](http://localhost:16686/)
 - Run the Go program - `go run main.go`
-- Find the span in Zipkin
+- Find the span in Jaeger
 
 ### What is happening?
 

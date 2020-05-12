@@ -2,44 +2,50 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: zipkin-tutorial
+  name: tracing-tutorial
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: zipkin
-  namespace: zipkin-tutorial
+  name: jaeger
+  namespace: tracing-tutorial
 spec:
   selector:
-    app: zipkin
+    app: jaeger
   ports:
     - protocol: TCP
       port: 9411
+      name: collector
       targetPort: 9411
+    - protocol: TCP
+      port: 16686
+      name: web
+      targetPort: 16686
   type: NodePort
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zipkin
-  namespace: zipkin-tutorial
+  name: jaeger
+  namespace: tracing-tutorial
   labels:
-    app: zipkin
+    app: jaeger
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: zipkin
+      app: jaeger
   template:
     metadata:
       labels:
-        app: zipkin
+        app: jaeger
     spec:
       containers:
-        - name: zipkin
-          image: openzipkin/zipkin-slim
+        - name: jaeger
+          image: jaegertracing/all-in-one
           imagePullPolicy: Always
           ports:
             - containerPort: 9411
+            - containerPort: 16686
