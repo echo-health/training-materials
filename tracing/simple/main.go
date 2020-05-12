@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/echo-health/training-materials/tracer"
+	"github.com/echo-health/training-materials/tracing/tracer"
 )
 
 func main() {

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/echo-health/training-materials/tracer"
+	"github.com/echo-health/training-materials/tracing/tracer"
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/sanity-io/litter"
 )
