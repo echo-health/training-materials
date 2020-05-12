@@ -12,10 +12,12 @@ import (
 	zipkinhttp "github.com/openzipkin/zipkin-go/reporter/http"
 )
 
-var port string
+var tracingPort string
+var webPort string
 
 func init() {
-	flag.StringVar(&port, "tracingPort", "9411", "port the tracer is running on")
+	flag.StringVar(&tracingPort, "tracingPort", "9411", "port the tracer is running on")
+	flag.StringVar(&webPort, "webPort", "16686", "port the web UI is running on")
 	flag.Parse()
 }
 
@@ -35,7 +37,7 @@ func Tracer(name string) opentracing.Tracer {
 	// This is where the tracing data will be sent. We're running Jaeger
 	// locally so it's available on localhost but in Kubernetes it's
 	// available using Kubernetes' DNS e.g. http://tracing/
-	addr := fmt.Sprintf("http://localhost:%s/api/v2/spans", port)
+	addr := fmt.Sprintf("http://localhost:%s/api/v2/spans", tracingPort)
 
 	// Create a reporter to send data to Jaeger. We use an HTTP reporter
 	// which sends data to Jaeger over HTTP requests.
@@ -62,6 +64,6 @@ func LogTraceID(span opentracing.Span) {
 	zs, ok := span.Context().(zipkinot.SpanContext)
 	if ok {
 		traceID := zs.TraceID.String()
-		fmt.Printf("View trace: http://localhost:%s/trace/%s\n", port, traceID)
+		fmt.Printf("View trace: http://localhost:%s/trace/%s\n", webPort, traceID)
 	}
 }
