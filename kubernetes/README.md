@@ -1,7 +1,7 @@
 # kubernetes
 The docs in this folder are intended to teach the basics of kubernetes abstractions. Each exercise is self contained, so you can skip to content that's most interesting to you or use this as a reference, or if you are a beginner, it is recommended you start at exercise 1 (see below).
 
-If you are intending on running this as a workshop, I've made a brief [agenda doc](workshop.md) to suggest things to mention during the session.
+If you are intending on running this as a workshop, I've made a brief [agenda doc](./docs/workshop.md) to suggest things to mention during the session.
 
 ## Prerequisites
 - Workshop 1:
