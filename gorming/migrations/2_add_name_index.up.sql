@@ -1,0 +1,1 @@
+CREATE INDEX CONCURRENTLY pets ON pets(kind);
