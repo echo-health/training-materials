@@ -21,3 +21,6 @@ If you have any feedback on any of the material, feel free to submit a pull requ
 - [Container debugging](./container-debugging)
   - **Description**: Intro to debugging a sad container using top, pprof and prometheus
   - **Owner**: Charlotte
+- [GORM](./gorming)
+  - **Description**: GORM in ECHO
+  - **Owner**: Jesús
